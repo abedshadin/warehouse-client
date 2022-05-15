@@ -1,4 +1,5 @@
 import React from 'react';
+import { Spinner } from 'react-bootstrap';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
@@ -17,7 +18,9 @@ const SocialLogin = () => {
         );
       }
       if (loading) {
-        return <p>Loading...</p>;
+        return <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>;
       }
       if (user) {
         navigate(from, { replace: true });
