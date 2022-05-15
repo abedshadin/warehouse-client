@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SocialLogin from '../SocialLogin/SocialLogin';
 import "./Register.css"
 const Register = () => {
     return (
@@ -18,7 +19,7 @@ const Register = () => {
              
         </form>
         <p>Already have an account? <Link to="/login" className='text-primary pe-auto text-decoration-none' >Please Login</Link> </p>
-       
+        <SocialLogin></SocialLogin>
     </div>
     );
 };
