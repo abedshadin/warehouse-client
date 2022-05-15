@@ -9,10 +9,12 @@ const Items = () => {
         .then(data=>setItems(data));
     },[])
     return (
-        <div className='row'>
+        <div className='container mt-4'>
+            <div className='row'>
              {
                 items.map(item=><Item key={item._id} item={item}></Item>)
             }
+            </div>
         </div>
     );
 };
