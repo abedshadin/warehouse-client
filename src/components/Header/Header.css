@@ -1,0 +1,9 @@
+.link {
+    margin-right: 5px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.link:hover{
+    color: yellow;
+}
