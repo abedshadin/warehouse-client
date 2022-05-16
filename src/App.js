@@ -5,7 +5,9 @@ import Blogs from './components/Blogs/Blogs';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
+import Inventory from './components/Inventory/Inventory';
 import Login from './components/Login/Login';
+import RequireAuth from './components/Login/RequireAuth/RequireAuth';
 import NotFound from './components/NotFound/NotFound';
 import Register from './components/Register/Register';
 
@@ -20,6 +22,11 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/about" element={<About />} />
         <Route path="/blogs" element={<Blogs />} />
+        <Route path="/inventory/:id" element={
+          <RequireAuth>
+            <Inventory></Inventory>
+          </RequireAuth>
+        }></Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer></Footer>

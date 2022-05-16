@@ -3,12 +3,12 @@ import "./Experience.css"
 const Experience = () => {
     return (
         <div>
-            <div className="container-fluid ">
+            <div className="container-fluid">
         <div className="row">
             <div className="col-xs-12 col-12 col-lg-3 text-center transparent col-md-6">
 		<div className=" py-0 py-lg-30  transparent ">
 		<h4 className="special-heading counter-heading text-center">
-		<span className="bold counter counted" data-from="0" data-to="25" data-speed="1500">25</span>
+		<span className="bold counter counted text-success" data-from="0" data-to="25" data-speed="1500">2</span>
 	
 	</h4>
 	<p className="special-heading text-center">
@@ -44,7 +44,7 @@ const Experience = () => {
 <div className="col-xs-12 col-12 col-lg-3 text-center transparent col-md-6">
 		<div className=" py-0 py-lg-30  transparent ">
 		<h4 className="special-heading counter-heading text-center">
-		<span className="bold counter counted" data-from="0" data-to="13" data-speed="1500">13</span>
+		<span className="bold counter counted" data-from="0" data-to="13" data-speed="1500">3</span>
 	<span className="bold">k</span>
 	</h4>
 	<p className="special-heading text-center">
@@ -62,7 +62,7 @@ const Experience = () => {
 <div className="col-xs-12 col-12 col-lg-3 text-center transparent col-md-6">
 		<div className=" py-0 py-lg-30  transparent ">
 		<h4 className="special-heading counter-heading text-center">
-		<span className="bold counter counted" data-from="0" data-to="17" data-speed="1500">17</span>
+		<span className="bold counter counted" data-from="0" data-to="17" data-speed="1500">4</span>
 	
 	</h4>
 	<p className="special-heading text-center">
