@@ -1,6 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import {  Link, useParams } from 'react-router-dom';
-const Inventory = () => {
+const Inventory = (e) => {
+    const handleDelivery =()=>{
+        e.preventDefault();
+        
+        const url = `http://localhost:5000/product/${id}`;
+        fetch(url,{
+            method: 'put',
+            headers:{
+                'content-type':'application/json'
+            },
+            body: JSON.stringify()
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            alert('done')
+            e.target.reset();
+        })
+    }
     const handleupdateQuantity = e =>{
         e.preventDefault();
         const quantity = e.target.addQuantity.value;
@@ -42,7 +59,7 @@ const Inventory = () => {
             <p><span className='bold'> Quantity:</span> {inventory.quantity} pcs</p>
             <p><span className='bold'> Supplier Name:</span> {inventory.s_name}</p>
             <p><span className='bold'> Description:</span> {inventory.s_desc}</p>
-            <button className='btn btn-primary'>Delivered</button>
+            <button className='btn btn-primary' onClick={handleDelivery}>Delivered</button>
             
                </div>
 

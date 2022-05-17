@@ -20,7 +20,9 @@ const Header = () => {
       <Link className='link' to="/">Home</Link>
       {
                                 user && <>
-                                <Link className='link' as={Link} to="/login">Add</Link>
+                                <Link className='link' as={Link} to="/addNew">Add Items</Link>
+                                <Link className='link' as={Link} to="/mngInventory">Manage Items</Link>
+                                <Link className='link' as={Link} to="/login">My Items</Link>
                           
                                 </>
                             }
