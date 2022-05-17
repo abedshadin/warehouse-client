@@ -19,7 +19,7 @@ const Item = ({item}) => {
     <Card.Title>{quantity} pcs</Card.Title>
     <Card.Title>{s_name} </Card.Title>
     <Card.Text>
-   {s_desc.slice(0,50)}......
+   {s_desc.slice(0,100)}......
     </Card.Text>
     <Button  onClick={() => navigateToItemDetail(_id)} variant="primary">Update</Button>
   </Card.Body>

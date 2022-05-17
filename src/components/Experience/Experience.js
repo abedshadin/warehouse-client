@@ -4,6 +4,7 @@ const Experience = () => {
     return (
         <div>
             <div className="container-fluid">
+				<h2 className='text-center'>Our Activities</h2>
         <div className="row">
             <div className="col-xs-12 col-12 col-lg-3 text-center transparent col-md-6">
 		<div className=" py-0 py-lg-30  transparent ">

@@ -47,10 +47,10 @@ const Login = () => {
      
         if(email){
           await sendPasswordResetEmail(email);
-          alert('Sent email');
+          toast('Sent email');
         }
         else{
-          alert('Please Enter Email')
+          toast('Please Enter Email')
         }
      
       }

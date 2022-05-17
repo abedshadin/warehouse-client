@@ -5,8 +5,24 @@ import auth from '../../firebase.init';
 const MyItems = () => {
     const [items,setitems] = useState([]);
     const [user] = useAuthState(auth);
+    const handleDelete = id =>{
+        const proceed = window.confirm('Are you sure?');
+        if(proceed){
+            const url = `http://localhost:5000/product/${id}`;
+            fetch(url, {
+                method: 'DELETE'
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                const remaining = items.filter(iteml => iteml._id !== id);
+                setitems(remaining);
+            })
+        }
+    }
     useEffect(()=>{
-        fetch('http://localhost:5000/product')
+        const email = user.email;
+        fetch(`http://localhost:5000/myitems?email=${email}`)
         .then(res=>res.json())
         .then(data=>setitems(data));
     },[])
@@ -15,14 +31,9 @@ const MyItems = () => {
         <div className='container'>
            <h1 className='text-center'>My Items</h1>
 
-            {
-              items.map(item=>{
-                 if(user.email==item.email){
-                     <p>{item.name}</p>
-                 }
-              })
-                 
-            }
+        {
+            items.map(item=> <div>{item.name} <button onClick={() => handleDelete(item._id)}>X</button> </div>)
+        }
         </div>
     );
 };
