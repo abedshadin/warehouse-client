@@ -3,35 +3,37 @@ import { Spinner } from 'react-bootstrap';
 import Item from '../Item/Item';
 
 const Items = () => {
-    const [spinner, setSpinner] = useState(false); 
+    const [loading, setLoading] = useState(false)
     const [items,setItems] = useState([]);
-    
+   
     useEffect(()=>{
-        
-        fetch("http://localhost:5000/product")
+        setLoading(true);
+        fetch("https://rocky-plateau-64241.herokuapp.com/product")
         .then(res=>res.json())
-        .then(data=>setItems(data));
-        setSpinner(true);
+        .then(data=>{
+
+            setItems(data)
+            setLoading(false)
+          })
     },[])
-    
+   
     return (
+       
         <div className='container mt-4'>
             <h2 className='text-center'>Our Products</h2>
             <div className='row gy-4'>
-             {
+            
+          {
+              loading ? <div className='text-center'><Spinner animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner></div>: <> {
                 items.map(item=><Item key={item._id} item={item}></Item>)
             }
-          {
-              spinner && <>
-              <div className='text-center'>
-             <Spinner animation="border" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </Spinner>
-            </div>
-            </>
+         </>
           }
             </div>
         </div>
+        
     );
 };
 

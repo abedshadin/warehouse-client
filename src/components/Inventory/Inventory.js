@@ -1,37 +1,51 @@
 import React, { useEffect, useState } from 'react';
 import {  Link, useParams } from 'react-router-dom';
 const Inventory = (e) => {
+    const [quan,setQuan]=useState([]);
+    useEffect(()=>{
+        fetch(`https://rocky-plateau-64241.herokuapp.com/product/${id}`)
+        .then(res=>res.json())
+        .then(data=>setQuan(data));
+    },[])
     const handleDelivery =()=>{
-        e.preventDefault();
+       
+        const quantity = parseInt(quan.quantity)-1;
+        const newQuantity = quantity;
         
-        const url = `http://localhost:5000/product/${id}`;
+        const url = `https://rocky-plateau-64241.herokuapp.com/product/${id}`;
+
+      
+
+
+
         fetch(url,{
             method: 'put',
             headers:{
                 'content-type':'application/json'
             },
-            body: JSON.stringify()
+            body: JSON.stringify({newQuantity})
         })
         .then(res=>res.json())
         .then(data=>{
             alert('done')
-            e.target.reset();
+           
         })
     }
     const handleupdateQuantity = e =>{
         e.preventDefault();
         const quantity = e.target.addQuantity.value;
-        const addQuan = {quantity}
-        const url = `http://localhost:5000/product/${id}`;
+        const addQuan = parseInt(quantity+quan.quantity);
+        const url = `https://rocky-plateau-64241.herokuapp.com/product/${id}`;
         fetch(url,{
             method: 'put',
             headers:{
                 'content-type':'application/json'
             },
-            body: JSON.stringify(addQuan)
+            body: JSON.stringify({addQuan})
         })
         .then(res=>res.json())
         .then(data=>{
+            console.log(data);
             alert('done')
             e.target.reset();
         })
@@ -41,7 +55,7 @@ const Inventory = (e) => {
     const [inventory, setInventory] = useState({});
 
     useEffect( () =>{
-        const url = `http://localhost:5000/inventory/${id}`;
+        const url = `https://rocky-plateau-64241.herokuapp.com/inventory/${id}`;
         console.log(url);
         fetch(url)
         .then(res=> res.json())
@@ -50,8 +64,11 @@ const Inventory = (e) => {
     }, [])
 
     return (
+
+        
         <div className='container'>
            <div className='row'>
+           {quan.length}
                <div className='col-md-6'>
                <h2 className='text-center mt-2'>{inventory.name}</h2>
             <div className='text-center'><img src={inventory.img} alt="" height="350px" /></div>
