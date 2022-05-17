@@ -9,7 +9,7 @@ import { toast, ToastContainer } from 'react-toastify';
 
 import SocialLogin from '../SocialLogin/SocialLogin';
 import auth from '../../firebase.init';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Spinner } from 'react-bootstrap';
 
 const Login = () => {
   const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(
@@ -76,13 +76,21 @@ const Login = () => {
       if(user){
         navigate(from, { replace: true });
       }
-     
+   
     return (
       
        
         <div>
             <div className='container w-50 mx-auto'>
-        
+            {
+              loading && <>
+              <div className='text-center'>
+             <Spinner animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+            </div>
+            </>
+          }
             <h2 className='text-primary text-center mt-2'>Please Login</h2>
             <Form onSubmit={handleLogin}>
                 <Form.Group className="mb-3" controlId="formBasicEmail" >
