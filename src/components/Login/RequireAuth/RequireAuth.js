@@ -28,7 +28,7 @@ const RequireAuth = ({ children }) => {
                     alert('Sent email');
                 }}
             >
-                Send Verification Email Again
+                Send Verification Code Again
             </button>
        
         </div>

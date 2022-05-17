@@ -10,6 +10,7 @@ import Inventory from './components/Inventory/Inventory';
 import Login from './components/Login/Login';
 import RequireAuth from './components/Login/RequireAuth/RequireAuth';
 import ManageInventory from './components/ManageInventory/ManageInventory';
+import MyItems from './components/MyItems/MyItems';
 import NotFound from './components/NotFound/NotFound';
 import Register from './components/Register/Register';
 
@@ -27,6 +28,11 @@ function App() {
         <Route path="/addNew" element={
           <RequireAuth>
            <AddNew />
+          </RequireAuth>
+        }></Route>
+        <Route path="/myitems" element={
+          <RequireAuth>
+           <MyItems />
           </RequireAuth>
         }></Route>
         <Route path="/mngInventory" element={
