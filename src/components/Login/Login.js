@@ -74,7 +74,7 @@ const Login = () => {
    
     
       if(user){
-        const url = "http://localhost:5000/login"
+        const url = "https://rocky-plateau-64241.herokuapp.com/login"
         fetch(url, {
   method: 'POST',
   body: JSON.stringify({

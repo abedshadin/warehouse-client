@@ -8,13 +8,13 @@ const MyItems = () => {
     const handleDelete = id =>{
         const proceed = window.confirm('Are you sure?');
         if(proceed){
-            const url = `http://localhost:5000/product/${id}`;
+            const url = `https://rocky-plateau-64241.herokuapp.com/product/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+               
                 const remaining = items.filter(iteml => iteml._id !== id);
                 setitems(remaining);
             })
@@ -22,11 +22,11 @@ const MyItems = () => {
     }
     useEffect(()=>{
         const email = user.email;
-        fetch(`http://localhost:5000/myitems?email=${email}`)
+        fetch(`https://rocky-plateau-64241.herokuapp.com/myitems?email=${email}`)
         .then(res=>res.json())
         .then(data=>setitems(data));
     },[])
-    console.log(user.email)
+
     return (
         <div className='container'>
            <h1 className='text-center'>My Items</h1>

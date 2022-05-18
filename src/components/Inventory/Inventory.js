@@ -12,7 +12,7 @@ const Inventory = (e) => {
   const handleDelivery = () => {
     
 
-    const url = `http://localhost:5000/product/${id}`;
+    const url = `https://rocky-plateau-64241.herokuapp.com/product/${id}`;
 
     fetch(url, {
       method: "put",
@@ -33,7 +33,7 @@ const Inventory = (e) => {
     const quantity = parseInt(e.target.addQuantity.value);
     const addQuan = parseInt(inventory.quantity)+quantity;
    
-    const url = `http://localhost:5000/product/${id}`;
+    const url = `https://rocky-plateau-64241.herokuapp.com/product/${id}`;
     fetch(url, {
       method: "put",
       headers: {
@@ -52,7 +52,7 @@ const Inventory = (e) => {
   };
 
   useEffect(() => {
-    const url = `http://localhost:5000/inventory/${id}`;
+    const url = `https://rocky-plateau-64241.herokuapp.com/inventory/${id}`;
     
     fetch(url)
       .then((res) => res.json())

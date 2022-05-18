@@ -10,7 +10,7 @@ const AddNew = () => {
     
     const onSubmit = (data,event) => {
       
-        const url = `http://localhost:5000/product`;
+        const url = `https://rocky-plateau-64241.herokuapp.com/product`;
         fetch(url, {
             method: 'POST',
             headers: {

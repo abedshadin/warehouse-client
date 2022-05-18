@@ -4,7 +4,7 @@ import Members from '../Members/Members';
 const OurMembers = () => {
     const [members,setMembers] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/members')
+        fetch('https://rocky-plateau-64241.herokuapp.com/members')
         .then(res=>res.json())
         .then(data=>setMembers(data));
     },[])

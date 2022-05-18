@@ -1,6 +1,6 @@
 # This is "Amar Stock" Web App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Live Site](https://warehouse-17112.web.app/).
 ## Short Description
 This web application made for manage our inventory. 
 ## Features

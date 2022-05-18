@@ -5,7 +5,7 @@ import ManageSingleIn from '../ManageSingleIn/ManageSingleIn';
 const ManageInventory = () => {
     const [items,setItems] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/product')
+        fetch('https://rocky-plateau-64241.herokuapp.com/product')
         .then(res=>res.json())
         .then(data=>setItems(data))
 
@@ -13,13 +13,13 @@ const ManageInventory = () => {
     const handleDelete = id =>{
         const proceed = window.confirm('Are you sure?');
         if(proceed){
-            const url = `http://localhost:5000/product/${id}`;
+            const url = `https://rocky-plateau-64241.herokuapp.com/product/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+               
                 const remaining = items.filter(iteml => iteml._id !== id);
                 setItems(remaining);
             })

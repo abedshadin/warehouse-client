@@ -8,7 +8,7 @@ const Items = () => {
    
     useEffect(()=>{
         setLoading(true);
-        fetch("http://localhost:5000/product")
+        fetch("https://rocky-plateau-64241.herokuapp.com/product")
         .then(res=>res.json())
         .then(data=>{
 
