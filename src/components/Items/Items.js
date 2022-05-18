@@ -27,7 +27,7 @@ const Items = () => {
               loading ? <div className='text-center'><Spinner animation="border" role="status">
               <span className="visually-hidden">Loading...</span>
             </Spinner></div>: <> {
-                items.map(item=><Item key={item._id} item={item}></Item>)
+                items.slice(0,6).map(item=><Item key={item._id} item={item}></Item>)
             }
          </>
           }
