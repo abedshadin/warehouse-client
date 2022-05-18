@@ -30,10 +30,29 @@ const MyItems = () => {
     return (
         <div className='container'>
            <h1 className='text-center'>My Items</h1>
-
-        {
-            items.map(item=> <div>{item.name} <button onClick={() => handleDelete(item._id)}>X</button> </div>)
-        }
+           <table className="table table-hover  table-striped table-bordered ml-4 ">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Action</th>
+                
+            </tr>
+            </thead>
+            <tbody>
+            
+            {
+                items.map(item=> <tr key={item._id}>
+                    <td>{item.name}</td>
+                    <td>{item.price}</td>
+                    <td>{item.quantity}</td>
+                    <td><button className='btn btn-danger' onClick={() => handleDelete(item._id)}>Delete</button></td>
+                    
+                    </tr>)
+            }
+            </tbody>
+        </table>
         </div>
     );
 };
