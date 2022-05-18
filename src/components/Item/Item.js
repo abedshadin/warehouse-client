@@ -16,6 +16,7 @@ const Item = ({item}) => {
   <Card.Body>
     <Card.Title>{name}</Card.Title>
     <Card.Title>{price} TK</Card.Title>
+    <Card.Title>{quantity} TK</Card.Title>
     <Card.Title>{s_name} </Card.Title>
     <Card.Text>
    {s_desc.slice(0,100)}......
