@@ -12,8 +12,7 @@ const Inventory = (e) => {
       .then((data) => setQuan(data));
   }, []);
   const handleDelivery = () => {
-    const quantity = parseInt(quan.quantity) - 1;
-    const newQuantity = quantity;
+    
 
     const url = `http://localhost:5000/product/${id}`;
 
@@ -22,7 +21,7 @@ const Inventory = (e) => {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify({ newQuantity }),
+      body: JSON.stringify({ quantity: inventory.quantity - 1 }),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -33,23 +32,24 @@ const Inventory = (e) => {
   };
   const handleupdateQuantity = (e) => {
     e.preventDefault();
-    const quantity = e.target.addQuantity.value;
-    const addQuan = parseInt(quantity + quan.quantity);
+    const quantity = parseInt(e.target.addQuantity.value);
+    const addQuan = parseInt(inventory.quantity)+quantity;
+    console.log(quantity);
     const url = `http://localhost:5000/product/${id}`;
     fetch(url, {
       method: "put",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify({ addQuan }),
+      body: JSON.stringify({quantity: addQuan}),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         e.target.reset();
-        if (data.modifiedCount > 0) {
-          alert("done");
-        }
+        setInventory({ ...inventory, quantity: addQuan });
+        alert("done");
+        console.log(data);
       });
   };
 
