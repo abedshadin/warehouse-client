@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
+import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from 'react-toastify';
 
 import { Link, useParams } from "react-router-dom";
 const Inventory = (e) => {
-  const [quan, setQuan] = useState([]);
+  
   const { id } = useParams();
   const [inventory, setInventory] = useState({});
-  console.log(inventory);
-  useEffect(() => {
-    fetch(`http://localhost:5000/product/${id}`)
-      .then((res) => res.json())
-      .then((data) => setQuan(data));
-  }, []);
+  
+  
   const handleDelivery = () => {
     
 
@@ -26,15 +24,15 @@ const Inventory = (e) => {
       .then((res) => res.json())
       .then((data) => {
         setInventory({ ...inventory, quantity: inventory.quantity - 1 });
-        alert("done");
-        console.log(data);
+        toast("Delivered Successfully");
+       
       });
   };
   const handleupdateQuantity = (e) => {
     e.preventDefault();
     const quantity = parseInt(e.target.addQuantity.value);
     const addQuan = parseInt(inventory.quantity)+quantity;
-    console.log(quantity);
+   
     const url = `http://localhost:5000/product/${id}`;
     fetch(url, {
       method: "put",
@@ -45,17 +43,17 @@ const Inventory = (e) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+       
         e.target.reset();
         setInventory({ ...inventory, quantity: addQuan });
-        alert("done");
-        console.log(data);
+        toast("Quantity Add Successfully");
+        
       });
   };
 
   useEffect(() => {
     const url = `http://localhost:5000/inventory/${id}`;
-    console.log(url);
+    
     fetch(url)
       .then((res) => res.json())
       .then((data) => setInventory(data));
@@ -99,7 +97,9 @@ const Inventory = (e) => {
       <div className="text-center text-decoration-none">
         <Link to="/mngInventory">Manage Inventory</Link>
       </div>
+      <ToastContainer></ToastContainer>
     </div>
+   
   );
 };
 
