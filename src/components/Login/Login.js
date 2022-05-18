@@ -74,13 +74,27 @@ const Login = () => {
    
     
       if(user){
+        const url = "http://localhost:5000/login"
+        fetch(url, {
+  method: 'POST',
+  body: JSON.stringify({
+    email: user.email
+  }),
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+})
+  .then((response) => response.json())
+  .then((json) => console.log(json));
         navigate(from, { replace: true });
       }
+     
    
     return (
       
        
         <div>
+       
             <div className='container w-50 mx-auto'>
             {
               loading && <>
@@ -105,7 +119,7 @@ const Login = () => {
             </Form>
          <p>New to Amar Stock? <Link to="/register" className='text-primary pe-auto text-decoration-none'>Please Register</Link> </p>
             <p>Forget Password? <button className='btn btn-link text-primary pe-auto text-decoration-none' onClick={resetPassword}>Reset Password</button> </p>
-            
+           
            <SocialLogin></SocialLogin>
             <ToastContainer />
         </div>
